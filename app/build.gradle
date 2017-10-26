@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "interview.legacy.pinterest.legacyinterview"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "interview.legacy.pinterest.legacyinterview.TestRunner.CustomTestRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+
+dependencies {
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    androidTestCompile('com.android.support.test.espresso:espresso-contrib:2.2') {
+        // Necessary to avoid version conflicts
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude module: 'recyclerview-v7'
+    }
+    androidTestCompile ('com.jakewharton.espresso:okhttp3-idling-resource:1.0.0') {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestCompile ('com.squareup.rx.idler:rx2-idler:0.9.0') {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+
+    compile 'com.android.support:appcompat-v7:25.1.0'
+
+    testCompile 'junit:junit:4.12'
+
+    compile 'com.google.code.gson:gson:2.7'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'io.reactivex:rxjava:1.1.6'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.0'
+
+    compile 'com.android.support:support-v4:25.1.0'
+    compile 'com.android.support:recyclerview-v7:25.1.0'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.android.support:cardview-v7:25.1.0'
+
+    compile 'com.google.dagger:dagger:2.8'
+    annotationProcessor "com.google.dagger:dagger-compiler:2.8"
+    provided 'javax.annotation:jsr250-api:1.0'
+}

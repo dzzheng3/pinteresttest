@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Pinterest Espresso</string>
+    <string name="board_name">Board: %s</string>
+    <string name="pin_note">Pin Note: %s</string>
+</resources>

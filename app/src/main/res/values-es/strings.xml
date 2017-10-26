@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Spanish Version</string>
+    <string name="board_name">Tablero: %s</string>
+    <string name="pin_note">Pin Nota: %s</string>
+</resources>
