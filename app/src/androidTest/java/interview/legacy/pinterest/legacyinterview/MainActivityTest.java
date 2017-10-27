@@ -80,37 +80,18 @@ public class MainActivityTest {
     }
 
 
+
     @Test
-    public void testAppNameLocale() {
-//        setLocale("en", "EN");
-        Resources resources = instrumentationCtx.getResources();
-        Locale current = resources.getConfiguration().locale;
-        if (current.getCountry().equals("EN")) {
-            ViewInteraction textView = onView(
-                    allOf(withText(resources.getString(R.string.app_name)),
-                            childAtPosition(
-                                    allOf(withId(R.id.action_bar),
-                                            childAtPosition(
-                                                    withId(R.id.action_bar_container),
-                                                    0)),
-                                    0),
-                            isDisplayed()));
-            textView.check(matches(withText(resources.getString(R.string.app_name))));
-        } else if (current.getCountry().equals("ES")) {
-            ViewInteraction textView = onView(
-                    allOf(withText(resources.getString(R.string.app_name)),
-                            childAtPosition(
-                                    allOf(withId(R.id.action_bar),
-                                            childAtPosition(
-                                                    withId(R.id.action_bar_container),
-                                                    0)),
-                                    0),
-                            isDisplayed()));
-            textView.check(matches(withText(resources.getString(R.string.app_name))));
+    public void HeaderOnFeedPageTest() {
+        String header = mActivityTestRule.getActivity().getString(R.string.app_name);
+        Locale current = mActivityTestRule.getActivity().getResources().getConfiguration().locale;
+        if (current.getLanguage().equals("en")) {
+            Assert.assertEquals("Pinterest Espresso", header);
+        } else if (current.getLanguage().equals("es")){
+            Assert. assertEquals("Spanish Version", header);
         }
 
-    }
-
+        ToolbarUtils.matchToolbarTitle(header);}
     private static Matcher<View> childAtPosition(
             final Matcher<View> parentMatcher, final int position) {
 
